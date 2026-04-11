@@ -1,4 +1,4 @@
-﻿product_id,name(en-gb),categories,isbn,quantity,Conditions,Author,Pages,Publisher Date,manufacturer,original price,description(en-gb)
+﻿product_id,name,categories,isbn,quantity,conditions,author,pages,publisher_date,manufacturer,original_price,description
 40001,,70,9787510805776,1,Condition B,,,,,,
 40002,,70,9787510804410,1,Condition B,,,,,,
 40003,,70,9789576585166,1,Condition B,,,,,,
