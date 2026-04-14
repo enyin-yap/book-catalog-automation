@@ -6,7 +6,7 @@ SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
 
 sys.path.append(SRC_PATH)
 
-from openlibrary_fetcher import fetch_openlibrary
+from collectors.openlibrary_fetcher import fetch_openlibrary
 
 # TEST 1: valid ISBN
 print("Test 1:", fetch_openlibrary("9780755331604"))

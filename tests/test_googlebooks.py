@@ -6,7 +6,7 @@ SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
 
 sys.path.append(SRC_PATH)
 
-from googlebooks_fetcher import fetch_googlebooks
+from collectors.googlebooks_fetcher import fetch_googlebooks
 
 # TEST 1: valid ISBN
 print("Test 1:", fetch_googlebooks("9780755331604"))
