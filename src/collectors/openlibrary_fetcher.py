@@ -19,5 +19,5 @@ def fetch_openlibrary(isbn):
             "publisher": data.get("publishers", [None])[0]
         }
 
-    except:
-        return {}
+    except requests.exceptions.RequestException as e:
+        return {"error": "REQUEST_FAILED", "details": str(e)}

@@ -37,11 +37,29 @@ def update_row_metadata(row, metadata):
         row["description"] = metadata["description"]
 
     if metadata.get("price"):
-        row["original_price"] = metadata["price"]
+        row["price"] = metadata["price"]
 
     return row
 
 
 def save_output_excel(df, path):
-    
+
+    book_columns = [
+        "isbn",
+        "price",
+        "name",
+        "author",
+        "pages",
+        "publisher_date",
+        "manufacturer",
+        "description"
+    ]
+
+    other_columns = [col for col in df.columns if col not in book_columns]
+
+    # combine
+    column_order = other_columns + book_columns
+
+    df = df[column_order]
+
     df.to_excel(path, index=False)

@@ -25,5 +25,5 @@ def scrape_books_tw(isbn):
             "price": price
         }
 
-    except:
-        return {}
+    except requests.exceptions.RequestException as e:
+        return {"error": "REQUEST_FAILED", "details": str(e)}

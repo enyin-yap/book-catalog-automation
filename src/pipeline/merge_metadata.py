@@ -1,51 +1,28 @@
+import re
+
+def clean_price(price):
+
+    if not price:
+        return None
+
+    match = re.search(r"(\d+)\s*元", price)
+
+    if match:
+        return int(match.group(1))
+
+    return None
+
 def merge_book_data(openlib, google, mandarin, isbn):
-    
-    # Merge metadata from multiple sources into one clean record.
-    # Priority: Google Books > OpenLibrary > books.tw (price only)
 
     result = {
         "isbn": isbn,
-
-        # core metadata
-        "title": None,
-        "author": None,
-        "pages": None,
-        "publisher": None,
-        "publish_date": None,
-        "description": None,
-        "price": None
+        "title": google.get("title") or openlib.get("title"),
+        "author": google.get("author") or openlib.get("author"),
+        "pages": google.get("pages") or openlib.get("pages"),
+        "publisher": google.get("publisher") or openlib.get("publisher"),
+        "publish_date": google.get("publish_date") or openlib.get("publish_date"),
+        "description": google.get("description") or openlib.get("description"),
+        "price": clean_price(mandarin.get("price"))
     }
-
-    
-    result["title"] = (
-        google.get("title")
-        or openlib.get("title")
-    )
-
-    
-    result["author"] = google.get("author")
-
-    
-    result["pages"] = (
-        google.get("pages")
-        or openlib.get("pages")
-    )
-
-
-    result["publisher"] = (
-        google.get("publisher")
-        or openlib.get("publisher")
-    )
-
-
-    result["publish_date"] = (
-        google.get("publish_date")
-        or openlib.get("publish_date")
-    )
-
-
-    result["description"] = google.get("description")
-
-    result["price"] = mandarin.get("price")
 
     return result
