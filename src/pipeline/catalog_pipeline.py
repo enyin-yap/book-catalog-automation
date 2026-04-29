@@ -3,6 +3,7 @@ from collectors.googlebooks_fetcher import fetch_googlebooks
 from collectors.mandarin_scraper import scrape_books_tw
 
 from pipeline.merge_metadata import merge_book_data
+from pipeline.insights import generate_insights
 from utils.file_handler import read_input_csv, save_output_excel
 
 import pandas as pd
@@ -38,7 +39,7 @@ def run_pipeline(input_path, output_path):
 
         # simple retry for error 503 
         if is_retryable_error(google_data):
-            print(f"[WARN] Google Books 503 for {isbn}, retrying...")
+            print(f"[WARN] Google Books error 503 for {isbn}, retrying...")
             time.sleep(1)
             google_data = fetch_googlebooks(isbn)
 
@@ -70,13 +71,13 @@ def run_pipeline(input_path, output_path):
        
         # Update CSV field
         field_mapping = {
-            "name": "title",
+            "title": "title",
             "author": "author",
             "pages": "pages",
             "publisher_date": "publish_date",
             "manufacturer": "publisher",
             "description": "description",
-            "price": "price"
+            "price (TWD)": "price"
         }
 
         for df_col, merged_key in field_mapping.items():
@@ -98,8 +99,9 @@ def run_pipeline(input_path, output_path):
         # simple rate limiting 
         time.sleep(0.2)
 
+    insights_df = generate_insights(df)
 
-    save_output_excel(df, output_path)
+    save_output_excel(df, output_path, insights_df)
 
     print(f"\nPipeline completed. Output saved to: {output_path}")
 
