@@ -42,5 +42,17 @@ def get_formats(workbook):
             "align": "center",
             "valign": "middle",
             "num_format": "0.00"
+        }),
+
+        "issues_check": workbook.add_format({
+            "font_color": "#006100",
+            "bold": True   
+        }),
+
+        "issues_cross": workbook.add_format({
+            "font_color": "#9C0006",
+            "bold": True,
+            "bg_color": "#febfb4"
         })
+
     }

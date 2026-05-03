@@ -43,15 +43,24 @@ def run_pipeline(input_path, output_path):
             time.sleep(1)
             google_data = fetch_googlebooks(isbn)
 
-        if not is_success(google_data):
+        if is_success(google_data):
+            google_status = "success"
+        else:
+            google_status = "fail"
             google_data = {}
+        
+        df.at[index, "google_status"] = google_status
 
  
         try:
             openlib_data = fetch_openlibrary(isbn)
+            openlib_status = "success" if is_success(openlib_data) else "fail"
         except Exception as e:
             print(f"[ERROR] OpenLibrary failed for {isbn}: {e}")
             openlib_data = {}
+            openlib_status = "fail"
+        
+        df.at[index, "openlibrary_status"] = openlib_status
 
 
         try:
@@ -59,6 +68,16 @@ def run_pipeline(input_path, output_path):
         except Exception as e:
             print(f"[ERROR] Scraper failed for {isbn}: {e}")
             scraper_data = {}
+
+        
+        if google_status == "success":
+            df.at[index, "primary_source"] = "google"
+
+        elif openlib_status == "success":
+            df.at[index, "primary_source"] = "openlibrary"
+
+        else:
+            df.at[index, "primary_source"] = "none"
 
 
         merged = merge_book_data(
