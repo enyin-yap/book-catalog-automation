@@ -1,6 +1,6 @@
 import pandas as pd
-from utils.excel_styles import get_formats
-from pipeline.insights import compute_data_quality_score
+from src.utils.excel_styles import get_formats
+from src.pipeline.insights import compute_data_quality_score
 
 
 def read_input_csv(path):

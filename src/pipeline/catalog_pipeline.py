@@ -1,10 +1,10 @@
-from collectors.openlibrary_fetcher import fetch_openlibrary
-from collectors.googlebooks_fetcher import fetch_googlebooks
-from collectors.mandarin_scraper import scrape_books_tw
+from src.collectors.openlibrary_fetcher import fetch_openlibrary
+from src.collectors.googlebooks_fetcher import fetch_googlebooks
+from src.collectors.mandarin_scraper import scrape_books_tw
 
-from pipeline.merge_metadata import merge_book_data
-from pipeline.insights import generate_insights
-from utils.file_handler import read_input_csv, save_output_excel
+from src.pipeline.merge_metadata import merge_book_data
+from src.pipeline.insights import generate_insights
+from src.utils.file_handler import read_input_csv, save_output_excel
 
 import pandas as pd
 import time

@@ -1,4 +1,4 @@
-from processors.normalizer import clean_price, normalize_date
+from src.processors.normalizer import clean_price, normalize_date
 
 def merge_book_data(openlib, google, mandarin, isbn):
 
