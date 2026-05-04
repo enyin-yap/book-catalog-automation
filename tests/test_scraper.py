@@ -1,12 +1,12 @@
-import sys
-import os
+# import sys
+# import os
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
+# CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+# SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
 
-sys.path.append(SRC_PATH)
+# sys.path.append(SRC_PATH)
 
-from collectors.mandarin_scraper import scrape_books_tw
+from src.collectors.mandarin_scraper import scrape_books_tw
 
 # Test 1: Mandarin ISBN (should work)
 print("Test 1:", scrape_books_tw("9789863424352"))

@@ -1,12 +1,12 @@
-import sys
-import os
+# import sys
+# import os
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
+# CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+# SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
 
-sys.path.append(SRC_PATH)
+# sys.path.append(SRC_PATH)
 
-from pipeline.merge_metadata import merge_book_data
+from src.pipeline.merge_metadata import merge_book_data
 
 # Use mock data to test the function first
 google = {

@@ -1,12 +1,12 @@
-import sys
-import os
+# import sys
+# import os
 
-CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
+# CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
+# SRC_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "src"))
 
-sys.path.append(SRC_PATH)
+# sys.path.append(SRC_PATH)
 
-from collectors.googlebooks_fetcher import fetch_googlebooks
+from src.collectors.googlebooks_fetcher import fetch_googlebooks
 
 # TEST 1: valid ISBN
 print("Test 1:", fetch_googlebooks("9780755331604"))
