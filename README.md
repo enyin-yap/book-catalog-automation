@@ -22,7 +22,7 @@ A data pipeline that processes ISBN-based book catalogs by aggregating metadata 
 
 A short video demonstration of the system showing the full workflow from uploading an ISBN CSV (or running the CLI), through metadata aggregation and processing, to generating a structured multi-sheet Excel output with data quality insights.
 
-▶️ Watch Demo: [link here]
+▶️ Watch Demo: [Demo Video](https://youtu.be/MpyM_jwNq4w)
 
 ---
 
